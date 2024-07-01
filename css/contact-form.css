@@ -1,0 +1,204 @@
+/* css/rating.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fbf1ee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    position: relative;
+    width: 100vw;
+    height: 27vh;
+    background-image: url('../assets/bgimg.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(251,241,238,1), rgba(251,241,238, 0));
+}
+
+.logo {
+    position: absolute;
+    top: 111%;
+    left: 50%;
+    transform: translate(-50%, -12%);
+    width: 28%;
+    max-width: 900px;
+    height: auto;
+    z-index: 1;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 13rem;
+    width: 100%;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 31.25px 0 31.25px 0; /* top right and bottom left sharp, others rounded */
+    padding: 2rem;
+    max-width: 900px;
+    width: 90%;
+    box-sizing: border-box;
+    text-align: left;
+    margin-bottom: 2vh;
+}
+
+.form-container h1.msg {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.form-container input[type="email"],
+.form-container textarea,
+.form-container button {
+    padding: .5rem;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.form-container input[type="email"] {
+    height: 3rem;
+}
+
+.form-container textarea {
+    height: 10rem;
+    resize: none;
+    overflow-y: auto;
+}
+
+.form-container button {
+    background-color: rgb(220, 12, 21);
+    color: white;
+    cursor: pointer;
+    height: auto;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+.form-container button:hover {
+    background-color: rgb(200, 0, 0);
+}
+
+.form-container label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container .checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container .checkbox-group input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    appearance: none;
+    border: 2px solid #ddd;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+}
+
+.form-container .checkbox-group input[type="checkbox"]:checked {
+    background-color: rgb(220, 12, 21);
+    border-color: rgb(220, 12, 21);
+}
+
+.form-container .checkbox-group input[type="checkbox"]:checked::before {
+    content: '✔';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+}
+
+.form-container .star-rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-container .star {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin: 0 0.2rem;
+}
+
+.form-container .star.hovered,
+.form-container .star.selected {
+    color: #ffd700;
+}
+
+@media (min-width: 600px) {
+    .form-container {
+        width: 80%;
+    }
+
+    .form-container h1.msg {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .form-container {
+        width: 60%;
+    }
+
+    .form-container h1.msg {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .form-container {
+        width: 50%;
+    }
+}

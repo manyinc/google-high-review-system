@@ -1,0 +1,156 @@
+/* css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(18,18,18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.header {
+    position: relative;
+    background-image: url('../assets/fetch.webp');
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(18, 18, 18, 1), rgba(18, 18, 18, 0));
+}
+
+.logo {
+    position: absolute;
+    top: 111%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35%;
+    max-width: 900px;
+    height: auto;
+    z-index: 1;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 11rem;
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8.5rem 0;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.card {
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    box-sizing: border-box;
+    margin-bottom: 2vh;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Treść karty powinna być nad pseudo-elementem */
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    backdrop-filter: blur(500px);
+    background: linear-gradient(to left top, rgba(255, 0, 0, 0.12), transparent),
+                linear-gradient(to right bottom, rgba(255, 255, 255, 0.12), transparent);
+    pointer-events: none; /* Zapobiega interakcji z pseudo-elementem */
+    border-radius: 15px; /* Dopasowanie do kształtu karty */
+    z-index: -1; /* Ustawienie pseudo-elementu pod treścią karty */
+        }
+
+.card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card .rating {
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+.card-container input[type=text],
+.card-container input[type=email],
+.card-container input[type=password] {
+    margin: 20px 0;
+    background: rgba(48, 48, 48, 1);
+    padding: 1rem 2.5rem 1rem 1rem;
+    border-radius: 25px;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+}
+
+.card-container button{
+    margin: 20px 0;
+    background: rgb(220,12,21);
+    padding: 1rem 2.5rem 1rem 1rem;
+    border-radius: 25px;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    max-width: 460px;
+}
+
+@media (min-width: 600px) {
+    .card {
+        width: 80%;
+    }
+
+    .card h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        width: 60%;
+    }
+
+    .card h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .card {
+        width: 50%;
+    }
+}

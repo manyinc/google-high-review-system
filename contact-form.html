@@ -1,0 +1,61 @@
+<!-- contact-form.html -->
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz Kontaktowy</title>
+    <link rel="stylesheet" href="css/contact-form.css">
+</head>
+<body>
+    <div class="header">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+    </div>
+    <div class="content">
+        <div class="form-container">
+            <h1 class="msg">Podziel się swoją opinią</h1>
+            <form action="includes/submit_form.php" method="post">
+                <div class="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <!-- Input ukryty przechowujący wybraną ocenę -->
+                <input type="hidden" id="rating" name="rating" value="0">
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <div class="checkbox-group">
+                    <label for="services-xyx" style="margin: 0.5rem 0;"><b>Usługi które wykonała firma xyx dla Pana / Pani:</b></label>
+                    <label><input type="checkbox" name="services[]" value="Panele słoneczne"> Panele słoneczne</label>
+                    <label><input type="checkbox" name="services[]" value="Pompa Ciepła"> Pompa Ciepła</label>
+                    <label><input type="checkbox" name="services[]" value="Magazyn energii"> Magazyn energii</label>
+                    <label><input type="checkbox" name="services[]" value="Termo modernizacja"> Termo modernizacja</label>
+                    <label><input type="checkbox" name="services[]" value="Turbina wiatrowa"> Turbina wiatrowa</label>
+                </div>
+
+                <label for="dissatisfaction">Z jakich elementów naszej usługi jest Pan/Pani najbardziej zadowolony/zadowolona?</label>
+                <textarea id="dissatisfaction" name="dissatisfaction"></textarea>
+
+                <label for="sales-dissatisfaction">W jakich obszarach widzi Pan/Pani potencjał do poprawy lub zmiany?</label>
+                <textarea id="sales-dissatisfaction" name="sales-dissatisfaction"></textarea>
+
+                <label for="installation-dissatisfaction">Czy jest coś, co Pan/Pani sugeruje, abyśmy w przyszłości wykonali inaczej?</label>
+                <textarea id="installation-dissatisfaction" name="installation-dissatisfaction"></textarea>
+
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="privacy_policy" required>Akceptuję&nbsp;<a href="polityka-prywatnosci" style="color: inherit; text-decoration: none;"><b>politykę prywatności</b></a></label>
+                </div>
+
+                <button type="submit">Wyślij</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/contact-form.js"></script>
+</body>
+</html>
