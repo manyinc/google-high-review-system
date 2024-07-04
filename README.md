@@ -1,11 +1,37 @@
-# System Opinii z Systemem Logowania i Rejestracji
+Opis Działania Aplikacji do Wystawiania Opinii
+Pomysł i Cel
+Celem aplikacji jest zbieranie opinii od klientów w sposób, który pozwala na konstruktywny feedback, jednocześnie zwiększając liczbę pozytywnych opinii widocznych w sieci. Aplikacja umożliwia:
 
-## Opis Działania Systemu
-System Opinii umożliwia użytkownikom dodawanie opinii na temat produktów lub usług. System posiada funkcje rejestracji i logowania użytkowników, zarządzanie uprawnieniami (user, admin), możliwość usuwania opinii oraz aktywację użytkowników przez administratora. 
+Zbieranie negatywnych i neutralnych opinii bez publikacji, co pozwala firmie na reakcję i poprawę jakości usług.
+Zachęcanie zadowolonych klientów do publikowania pozytywnych opinii na Google.
+Funkcjonalności
+Krótki Link do Wystawienia Opinii:
+Generowanie przyjaznych linków, które można wysłać do klientów.
+Gotowa Wiadomość z Prośbą o Wystawienie Opinii:
+Szablonowa wiadomość e-mail/SMS, którą można masowo wysyłać do klientów, zawierająca link do wystawienia opinii.
+Strona Zbierająca Opinie:
+Strona, na której klienci mogą wybrać ocenę w skali od 1 do 5 gwiazdek.
+Dla ocen od 1 do 4 gwiazdek, klienci są przekierowywani do formularza feedbacku, który jest widoczny tylko dla firmy.
+Dla ocen 5-gwiazdkowych, klienci są przekierowywani do strony Google, gdzie mogą opublikować swoją opinię.
+Scenariusze Działania
+Klient Otrzymuje Wiadomość:
 
-## Struktura Katalogów
+Klient otrzymuje wiadomość e-mail/SMS z prośbą o wystawienie opinii wraz z linkiem.
+Klient Wystawia Opinię:
 
-```plaintext
+Klient klika w link i zostaje przekierowany na stronę z wyborem oceny.
+Klient wybiera ocenę:
+1-4 gwiazdki: Klient jest przekierowywany do formularza feedbacku, gdzie może pozostawić szczegółowe uwagi. Te opinie są przesyłane wyłącznie do firmy i nie są publicznie widoczne.
+5 gwiazdek: Klient jest przekierowywany do okienka Google, gdzie może opublikować swoją opinię.
+Firma Otrzymuje Feedback:
+
+Negatywne i neutralne opinie są przesyłane do bazy danych firmy, gdzie mogą być analizowane i wykorzystywane do poprawy usług.
+Publikacja Pozytywnych Opinii:
+
+Pozytywne opinie (5-gwiazdkowe) są publikowane w Google, co zwiększa widoczność firmy w sieci.
+Struktura Katalogów
+plaintext
+Skopiuj kod
 public_html/
 ├── assets/
 │   ├── bgimg.png
@@ -41,8 +67,8 @@ public_html/
 └── login.html
 Przygotowanie Środowiska
 Instalacja Serwera Web i PHP:
-Upewnij się, że masz zainstalowany serwer web (np. Apache) oraz PHP.
 
+Upewnij się, że masz zainstalowany serwer web (np. Apache) oraz PHP.
 Konfiguracja Bazy Danych:
 
 Utwórz bazę danych MySQL.
@@ -56,6 +82,16 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     role ENUM('user', 'admin') DEFAULT 'user',
     is_active BOOLEAN DEFAULT FALSE
+);
+Utwórz tabelę feedback do przechowywania opinii:
+sql
+Skopiuj kod
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    rating INT NOT NULL,
+    comment TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 Konfiguracja Pliku db_config.php:
 Skonfiguruj połączenie z bazą danych w pliku includes/db_config.php:
@@ -79,7 +115,7 @@ Stylizacja Formularzy:
 Dodaj pliki registration.css i login.css do katalogu css/.
 Upewnij się, że pliki register.html i login.html odwołują się do odpowiednich plików CSS.
 Zabezpieczenie Strony f1ec19ad59bf6cb605c3101fee3d56be39a41706edce120dc85b186eb1f57be2.php:
-Na początku tego pliku dodaj kod sprawdzający, czy użytkownik jest zalogowany:
+Na początku tego pliku dodaj kod sprawdzający, czy użytkownik jest zalogowany.
 
 php
 Skopiuj kod
@@ -91,7 +127,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 Przekierowanie Po Zalogowaniu:
-Zaktualizuj plik login.php, aby przekierowywał do f1ec19ad59bf6cb605c3101fee3d56be39a41706edce120dc85b186eb1f57be2.php po pomyślnym zalogowaniu:
+Zaktualizuj plik login.php, aby przekierowywał do f1ec19ad59bf6cb605c3101fee3d56be39a41706edce120dc85b186eb1f57be2.php po pomyślnym zalogowaniu.
 
 php
 Skopiuj kod
@@ -127,11 +163,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
-Konfiguracja Środowiska
-Przenieś pliki do katalogu public_html na serwerze web.
-Upewnij się, że serwer ma odpowiednie uprawnienia do odczytu plików.
-Skonfiguruj bazę danych zgodnie z powyższymi instrukcjami.
-Uruchom serwer web i sprawdź działanie systemu.
 Użytkowanie Systemu
 Rejestracja Użytkownika:
 
@@ -147,3 +178,5 @@ Administratorzy mogą usuwać opinie za pomocą skryptu delete_opinion.php.
 Aktywacja Użytkowników przez Administratora:
 
 Administratorzy mogą aktywować nowych użytkowników w bazie danych, ustawiając wartość is_active na TRUE dla odpowiednich kont.
+Uwagi Końcowe
+Pamiętaj o zabezpieczeniu plików i katalogów oraz regularnym tworzeniu kopii zapasowych bazy danych i plików systemu.
