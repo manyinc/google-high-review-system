@@ -34,7 +34,7 @@ Celem aplikacji jest zbieranie opinii od klientów w sposób, który pozwala na 
 ### Konfiguracja Bazy Danych
 
 1. Utwórz bazę danych MySQL.
-2. Utwórz tabelę users z następującymi kolumnami:
+2. Utwórz tabelę `users` z następującymi kolumnami:
 ``` sql
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -46,7 +46,7 @@ CREATE TABLE users (
 );
 ```
 
-3. Utwórz tabelę feedback do przechowywania opinii:
+3. Utwórz tabelę `feedback` do przechowywania opinii:
 ```sql
 
 CREATE TABLE feedback (
@@ -59,7 +59,7 @@ CREATE TABLE feedback (
 ```
 
 4. Konfiguracja Pliku db_config.php:
-Skonfiguruj połączenie z bazą danych w pliku includes/db_config.php:
+Skonfiguruj połączenie z bazą danych w pliku `includes/db_config.php`:
 ```php
 <?php
 $servername = "localhost";
@@ -96,6 +96,6 @@ if ($conn->connect_error) {
 1. Go to website 'https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder'
 2. Enter your company name
 3. Copy your PlaceID
-4. Combine your google link 'https://search.google.com/local/writereview?placeid=PLACE_ID' replace PLACE_ID with your company's place ID
-5. Go to 'js/rating.js', 'js/contact-form.js' and edit:
- - "window.location.href = 'your_company_link_placeID';" paste here your company link with placeID
+4. Combine your google link 'https://search.google.com/local/writereview?placeid=PLACE_ID' replace `PLACE_ID` with your company's place ID
+5. Go to `js/rating.js` , `js/contact-form.js` and edit:
+ - `window.location.href = 'your_company_link_placeID';` paste here your company link with placeID
